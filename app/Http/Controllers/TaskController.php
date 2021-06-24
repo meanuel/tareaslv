@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -40,6 +41,25 @@ class TaskController extends Controller
         $request->user()->tasks()->create([
             'title' => $request->title
         ]);
+
+        return redirect('/tasks');
+    }
+
+    /**
+     * Elimino una tarea de un usuario
+     * 
+     * @param Task id $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $task = Task::find($id);
+
+        if (empty($task)) {
+            return redirect('/tasks');
+        }
+
+        $task->delete();
 
         return redirect('/tasks');
     }
