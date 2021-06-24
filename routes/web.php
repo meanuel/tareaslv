@@ -22,5 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index']);
-Route::post('/tasks', [App\Http\Controllers\TaskController::class, 'store']);
+Route::post('/tasks', [App\Http\Controllers\TaskController::class, 'store'])->name('tasks.store');
 Route::delete('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'destroy']);
