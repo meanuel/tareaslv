@@ -59,6 +59,9 @@ class TaskController extends Controller
             return redirect('/tasks');
         }
 
+        //Valido que el usuario tenga autorización
+        $this->authorize('verify', $task);
+
         return view('tasks.edit', ['task' => $task]);
     }
 
@@ -81,6 +84,9 @@ class TaskController extends Controller
             return redirect('/tasks');
         }
 
+        //Valido que el usuario tenga autorización
+        $this->authorize('verify', $task);
+
         $task->title = $request->title;
         $task->save();
 
@@ -100,6 +106,9 @@ class TaskController extends Controller
         if (empty($task)) {
             return redirect('/tasks');
         }
+        
+        //Valido que el usuario tenga autorización
+        $this->authorize('verify', $task);
 
         $task->delete();
 
