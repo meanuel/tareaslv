@@ -47,6 +47,6 @@
 
     <br>
 
-    <!-- TODO: Current Tasks -->
+    @include('tasks.partials.tasks-list')
 </div>
 @endsection
