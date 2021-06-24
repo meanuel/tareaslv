@@ -15,4 +15,17 @@ class TaskController extends Controller
     {
         return view('tasks.index');
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:255' //Indico el campo title que es obligatorio y máximo de 255 caracteres
+        ]);
+
+        $request->user()->tasks()->create([
+            'title' => $request->title
+        ]);
+
+        return redirect('/tasks');
+    }
 }

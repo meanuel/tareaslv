@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relación 1 a muchos
+    public function tasks() {
+        return $this->hasMany(Task::class);
+    }
 }
