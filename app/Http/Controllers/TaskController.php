@@ -46,6 +46,48 @@ class TaskController extends Controller
     }
 
     /**
+     * Cargo una tarea de un usuario
+     * 
+     * @param Task id $id
+     * @return Response
+     */
+    public function editView($id)
+    {
+        $task = Task::find($id);
+
+        if (empty($task)) {
+            return redirect('/tasks');
+        }
+
+        return view('tasks.edit', ['task' => $task]);
+    }
+
+    /**
+     * Edito una tarea de un usuario
+     * 
+     * @param Request $request
+     * @param Task id $id
+     * @return Response
+     */
+    public function edit(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:255' //Indico el campo title que es obligatorio y máximo de 255 caracteres
+        ]);
+
+        $task = Task::find($id);
+
+        if (empty($task)) {
+            return redirect('/tasks');
+        }
+
+        $task->title = $request->title;
+        $task->save();
+
+        return redirect('/tasks');
+    }
+
+    /**
      * Elimino una tarea de un usuario
      * 
      * @param Task id $id

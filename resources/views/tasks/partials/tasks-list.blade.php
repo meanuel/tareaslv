@@ -12,7 +12,10 @@
                     @foreach($tasks as $task)
                         <tr>
                             <td>{{ $task->title }}</td>
-                            <td>
+                            <td style="display: flex;">
+                                <a class="btn btn-info" href="{{ route('tasks.edit_view', [$task->id]) }}" style="margin-right: 5px;">
+                                    Edit
+                                </a>
                                 <form action="{{ route('tasks.destroy', [$task->id]) }}" method="POST">
                                     @csrf
 
