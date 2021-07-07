@@ -31,3 +31,19 @@ Route::group([
         Route::get('user', 'AuthController@user');
     });
 });
+
+Route::group([
+    'prefix' => 'task'
+], function () {
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('tasks', 'TaskController@indexApi');
+        Route::post('store', 'TaskController@storeApi');
+        Route::get('editView', 'TaskController@editViewApi');
+        Route::post('edit', 'TaskController@editApi');
+        Route::post('destroy', 'TaskController@destroyApi');
+        
+
+    });
+});
