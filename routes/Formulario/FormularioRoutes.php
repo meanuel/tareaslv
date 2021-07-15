@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Rutas de Auth
-require __DIR__ . '/Auth/AuthRoutes.php';
-
-//Rutas de Task
-require __DIR__ . '/Task/TaskRoutes.php';
-
-//Rutas de Formularios
-require __DIR__ . '/Formulario/FormularioRoutes.php';
+Route::group([
+    'prefix' => 'formulario'
+], function () {
+    Route::get('getlist', 'FormularioController@getFormularios');
+    Route::post('getdata', 'FormularioController@getDataFormulario');
+});
