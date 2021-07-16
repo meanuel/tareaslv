@@ -106,7 +106,7 @@
 							"raw": "{\r\n    \"email\": \"hola@programador.com\",\r\n    \"password\": \"123123\",\r\n    \"remember_me\":true\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost/tareaslv/public/api/formulario/getlist",
+							"raw": "http://localhost/tareaslv/public/api/formulario/getlist?tipo=P&medico=root",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -117,6 +117,16 @@
 								"api",
 								"formulario",
 								"getlist"
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "P"
+								},
+								{
+									"key": "medico",
+									"value": "root"
+								}
 							]
 						}
 					},

@@ -26,8 +26,8 @@ class FormularioController extends Controller
         //Cargo las formularios
         if($sTipo == 'P')
         {
-            $aFormularios = Formulario::where('medico', '=', $sMedico)
-                                        ->orWhere('tipo', '=', 'A')
+            $aFormularios = Formulario::where('medico', $sMedico)
+                                        ->orWhere('tipo', 'A')
                                         ->orderBy('tipo', 'desc')
                                         ->orderBy('medico')
                                         ->orderBy('codigo')
