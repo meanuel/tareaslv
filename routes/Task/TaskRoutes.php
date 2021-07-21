@@ -22,7 +22,7 @@ Route::group([
     ], function() {
         Route::get('tasks', 'TaskController@indexApi');
         Route::post('store', 'TaskController@storeApi');
-        Route::get('editView', 'TaskController@editViewApi');
+        Route::get('editView/{id}', 'TaskController@editViewApi');
         Route::post('edit', 'TaskController@editApi');
         Route::post('destroy', 'TaskController@destroyApi');
         
