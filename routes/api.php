@@ -4,16 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Rutas de Auth
+require __DIR__ . '/Auth/AuthRoutes.php';
 
-Route::group([
-    'prefix' => 'auth'
-], function () {
-    Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signUp');
+//Rutas de Task
+require __DIR__ . '/Task/TaskRoutes.php';
 
+<<<<<<< HEAD
     Route::group([
       'middleware' => 'auth:api'
     ], function() {
@@ -37,3 +34,7 @@ Route::group([
 
     });
 });
+=======
+//Rutas de Formularios
+require __DIR__ . '/Formulario/FormularioRoutes.php';
+>>>>>>> f6862470ab82f2551e7a60b2b76ab6013cac17ca
