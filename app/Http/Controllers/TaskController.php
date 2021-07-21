@@ -156,9 +156,9 @@ class TaskController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function editViewApi(Request $request)
+    public function editViewApi($id)
     {
-        $task = Task::find($request->id);
+        $task = Task::find($id);
 
         if (empty($task)) {
             return response()->json([
