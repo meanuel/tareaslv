@@ -12,3 +12,6 @@ require __DIR__ . '/Task/TaskRoutes.php';
 
 //Rutas de Formularios
 require __DIR__ . '/Formulario/FormularioRoutes.php';
+
+//Ruta de Auth AUNA
+require __DIR__ . '/authAuna/authAunaRoutes.php';

@@ -83,4 +83,19 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
+
+    public function loginAuna(Request $request)
+    {
+        $user = User::where('codigo', $request->Codigo)->first();
+
+        if ($user->Password == sha1($request->Password)){
+            return response()->json([
+                'message' => 'bienvenido',
+                'api_token' => $user->api_token
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
+    }
 }

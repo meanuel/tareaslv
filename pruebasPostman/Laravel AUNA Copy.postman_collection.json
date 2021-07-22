@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "8e1a338d-89ce-406e-9005-2cfbeb0dc94a",
+		"name": "Laravel AUNA Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD API",
+			"item": [
+				{
+					"name": "Signup Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hol2a@programador.com\",\r\n    \"name\":\"Programador\",\r\n    \"password\": \"123123\",\r\n    \"remember_me\":true\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hola@programador.com\",\r\n    \"password\": \"123123\",\r\n    \"remember_me\":true\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Formularios Laravel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hola@programador.com\",\r\n    \"password\": \"123123\",\r\n    \"remember_me\":true\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/formulario/getlist?tipo=P&medico=root",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"formulario",
+								"getlist"
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "P"
+								},
+								{
+									"key": "medico",
+									"value": "root"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Data Formularios Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"root_000020\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/formulario/getdata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"formulario",
+								"getdata"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tasks Laravel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODM1MmM4ZWJlNjY1NDI4OGExYTQ4OTE3MTM5NTQxYzYwZDE5YTQyNjAzYzEzY2ZlZGQ4NTFiNmZiY2UyMzhjMGRlNjBkNTE2NTk2ZDU1MWIiLCJpYXQiOjE2MjU2MzI1NTgsIm5iZiI6MTYyNTYzMjU1OCwiZXhwIjoxNjU3MTY4NTU4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.KxOjlTCEgMt3uEqGN6b31JkLFba6KqIE5cp4roSwYPNC9X10sdS8AMXfwUcslrbyLatlLeNCOZe9bfh8C9peK9eEA9x4NJzKdatrMC9dXF7SnjXXu6tFYJzU__8AEOzZ_REhtj0YP-TJ2U__rh754kuX471IGkWaWct79yfmbf1Nm6vIhuYfDXGkuG5vmUY_4LDcDrzI6dJOa5NySMzKjhOIf5QEOBBTgz2bA0d1I2eOPIhDJPYca8nibMjtyNAQ70eAdv-yOBO-gTcwyQ5h5ZH0zYPlyxufHJ4x8E92heJ6jJLw6Th2-cVyzpFOiGGjTzUXJoDFGxPIpyiZrTrJg3UR5DfU05FNZXzFIJ8QEK1uqw-Vo2LuebpUOyjPiqO7onCNR3OPfQ0ud-ne-DU7dVrARxvyjLkY2D9gRE_AhxFYc3wwVd05yMt15KDvwHWMOMKIxo8pOO6sUNlfxgbkiGbU-CV8t29GuoC5Sev9S_cSstHzJQrl0P_Rg-DKG8mWRPvoqsbc6KuUfXDbEr2FXn0k7UjWhPe_gdu-PvkGQ1PmlYoGW9xtFqrtBYOsAmE7zLQEysIfCaNfwFtGtP23K4G8MfO-qJck88Iyi5qRlVXqFP7uM0s4Rhcatiy2wM9O38-QV1_KK3zkZ13rMjaM_iTnZJ0DP1FOpnc-zWU-o-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hola@programador.com\",\r\n    \"password\": \"123123\",\r\n    \"remember_me\":true\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/task/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"task",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODM1MmM4ZWJlNjY1NDI4OGExYTQ4OTE3MTM5NTQxYzYwZDE5YTQyNjAzYzEzY2ZlZGQ4NTFiNmZiY2UyMzhjMGRlNjBkNTE2NTk2ZDU1MWIiLCJpYXQiOjE2MjU2MzI1NTgsIm5iZiI6MTYyNTYzMjU1OCwiZXhwIjoxNjU3MTY4NTU4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.KxOjlTCEgMt3uEqGN6b31JkLFba6KqIE5cp4roSwYPNC9X10sdS8AMXfwUcslrbyLatlLeNCOZe9bfh8C9peK9eEA9x4NJzKdatrMC9dXF7SnjXXu6tFYJzU__8AEOzZ_REhtj0YP-TJ2U__rh754kuX471IGkWaWct79yfmbf1Nm6vIhuYfDXGkuG5vmUY_4LDcDrzI6dJOa5NySMzKjhOIf5QEOBBTgz2bA0d1I2eOPIhDJPYca8nibMjtyNAQ70eAdv-yOBO-gTcwyQ5h5ZH0zYPlyxufHJ4x8E92heJ6jJLw6Th2-cVyzpFOiGGjTzUXJoDFGxPIpyiZrTrJg3UR5DfU05FNZXzFIJ8QEK1uqw-Vo2LuebpUOyjPiqO7onCNR3OPfQ0ud-ne-DU7dVrARxvyjLkY2D9gRE_AhxFYc3wwVd05yMt15KDvwHWMOMKIxo8pOO6sUNlfxgbkiGbU-CV8t29GuoC5Sev9S_cSstHzJQrl0P_Rg-DKG8mWRPvoqsbc6KuUfXDbEr2FXn0k7UjWhPe_gdu-PvkGQ1PmlYoGW9xtFqrtBYOsAmE7zLQEysIfCaNfwFtGtP23K4G8MfO-qJck88Iyi5qRlVXqFP7uM0s4Rhcatiy2wM9O38-QV1_KK3zkZ13rMjaM_iTnZJ0DP1FOpnc-zWU-o-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mi tarea API Segunda\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/task/store",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"task",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditView Laravel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODM1MmM4ZWJlNjY1NDI4OGExYTQ4OTE3MTM5NTQxYzYwZDE5YTQyNjAzYzEzY2ZlZGQ4NTFiNmZiY2UyMzhjMGRlNjBkNTE2NTk2ZDU1MWIiLCJpYXQiOjE2MjU2MzI1NTgsIm5iZiI6MTYyNTYzMjU1OCwiZXhwIjoxNjU3MTY4NTU4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.KxOjlTCEgMt3uEqGN6b31JkLFba6KqIE5cp4roSwYPNC9X10sdS8AMXfwUcslrbyLatlLeNCOZe9bfh8C9peK9eEA9x4NJzKdatrMC9dXF7SnjXXu6tFYJzU__8AEOzZ_REhtj0YP-TJ2U__rh754kuX471IGkWaWct79yfmbf1Nm6vIhuYfDXGkuG5vmUY_4LDcDrzI6dJOa5NySMzKjhOIf5QEOBBTgz2bA0d1I2eOPIhDJPYca8nibMjtyNAQ70eAdv-yOBO-gTcwyQ5h5ZH0zYPlyxufHJ4x8E92heJ6jJLw6Th2-cVyzpFOiGGjTzUXJoDFGxPIpyiZrTrJg3UR5DfU05FNZXzFIJ8QEK1uqw-Vo2LuebpUOyjPiqO7onCNR3OPfQ0ud-ne-DU7dVrARxvyjLkY2D9gRE_AhxFYc3wwVd05yMt15KDvwHWMOMKIxo8pOO6sUNlfxgbkiGbU-CV8t29GuoC5Sev9S_cSstHzJQrl0P_Rg-DKG8mWRPvoqsbc6KuUfXDbEr2FXn0k7UjWhPe_gdu-PvkGQ1PmlYoGW9xtFqrtBYOsAmE7zLQEysIfCaNfwFtGtP23K4G8MfO-qJck88Iyi5qRlVXqFP7uM0s4Rhcatiy2wM9O38-QV1_KK3zkZ13rMjaM_iTnZJ0DP1FOpnc-zWU-o-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 13\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/task/editView",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"task",
+								"editView"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODM1MmM4ZWJlNjY1NDI4OGExYTQ4OTE3MTM5NTQxYzYwZDE5YTQyNjAzYzEzY2ZlZGQ4NTFiNmZiY2UyMzhjMGRlNjBkNTE2NTk2ZDU1MWIiLCJpYXQiOjE2MjU2MzI1NTgsIm5iZiI6MTYyNTYzMjU1OCwiZXhwIjoxNjU3MTY4NTU4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.KxOjlTCEgMt3uEqGN6b31JkLFba6KqIE5cp4roSwYPNC9X10sdS8AMXfwUcslrbyLatlLeNCOZe9bfh8C9peK9eEA9x4NJzKdatrMC9dXF7SnjXXu6tFYJzU__8AEOzZ_REhtj0YP-TJ2U__rh754kuX471IGkWaWct79yfmbf1Nm6vIhuYfDXGkuG5vmUY_4LDcDrzI6dJOa5NySMzKjhOIf5QEOBBTgz2bA0d1I2eOPIhDJPYca8nibMjtyNAQ70eAdv-yOBO-gTcwyQ5h5ZH0zYPlyxufHJ4x8E92heJ6jJLw6Th2-cVyzpFOiGGjTzUXJoDFGxPIpyiZrTrJg3UR5DfU05FNZXzFIJ8QEK1uqw-Vo2LuebpUOyjPiqO7onCNR3OPfQ0ud-ne-DU7dVrARxvyjLkY2D9gRE_AhxFYc3wwVd05yMt15KDvwHWMOMKIxo8pOO6sUNlfxgbkiGbU-CV8t29GuoC5Sev9S_cSstHzJQrl0P_Rg-DKG8mWRPvoqsbc6KuUfXDbEr2FXn0k7UjWhPe_gdu-PvkGQ1PmlYoGW9xtFqrtBYOsAmE7zLQEysIfCaNfwFtGtP23K4G8MfO-qJck88Iyi5qRlVXqFP7uM0s4Rhcatiy2wM9O38-QV1_KK3zkZ13rMjaM_iTnZJ0DP1FOpnc-zWU-o-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 13,\r\n    \"title\": \"Mi tarea API Editada\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/task/edit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"task",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy Laravel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Requested-With",
+								"value": "XMLHttpRequest",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODM1MmM4ZWJlNjY1NDI4OGExYTQ4OTE3MTM5NTQxYzYwZDE5YTQyNjAzYzEzY2ZlZGQ4NTFiNmZiY2UyMzhjMGRlNjBkNTE2NTk2ZDU1MWIiLCJpYXQiOjE2MjU2MzI1NTgsIm5iZiI6MTYyNTYzMjU1OCwiZXhwIjoxNjU3MTY4NTU4LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.KxOjlTCEgMt3uEqGN6b31JkLFba6KqIE5cp4roSwYPNC9X10sdS8AMXfwUcslrbyLatlLeNCOZe9bfh8C9peK9eEA9x4NJzKdatrMC9dXF7SnjXXu6tFYJzU__8AEOzZ_REhtj0YP-TJ2U__rh754kuX471IGkWaWct79yfmbf1Nm6vIhuYfDXGkuG5vmUY_4LDcDrzI6dJOa5NySMzKjhOIf5QEOBBTgz2bA0d1I2eOPIhDJPYca8nibMjtyNAQ70eAdv-yOBO-gTcwyQ5h5ZH0zYPlyxufHJ4x8E92heJ6jJLw6Th2-cVyzpFOiGGjTzUXJoDFGxPIpyiZrTrJg3UR5DfU05FNZXzFIJ8QEK1uqw-Vo2LuebpUOyjPiqO7onCNR3OPfQ0ud-ne-DU7dVrARxvyjLkY2D9gRE_AhxFYc3wwVd05yMt15KDvwHWMOMKIxo8pOO6sUNlfxgbkiGbU-CV8t29GuoC5Sev9S_cSstHzJQrl0P_Rg-DKG8mWRPvoqsbc6KuUfXDbEr2FXn0k7UjWhPe_gdu-PvkGQ1PmlYoGW9xtFqrtBYOsAmE7zLQEysIfCaNfwFtGtP23K4G8MfO-qJck88Iyi5qRlVXqFP7uM0s4Rhcatiy2wM9O38-QV1_KK3zkZ13rMjaM_iTnZJ0DP1FOpnc-zWU-o-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/task/destroy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"task",
+								"destroy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Auna",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Codigo\": \"03150\",\r\n    \"Password\": \"00000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/tareaslv/public/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"tareaslv",
+								"public",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
