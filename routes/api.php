@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Rutas de Auth
-require __DIR__ . '/Auth/AuthRoutes.php';
+// require __DIR__ . '/Auth/AuthRoutes.php';
 
 //Rutas de tareas
 require __DIR__ . '/Task/TaskRoutes.php';

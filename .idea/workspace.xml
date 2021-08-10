@@ -135,6 +135,8 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1vOxNVc5KW7s4rM2IMGjpXV4ome" />
@@ -174,10 +176,14 @@
       <workItem from="1626456068532" duration="1284000" />
       <workItem from="1626463967168" duration="144000" />
       <workItem from="1626464845103" duration="468000" />
+      <workItem from="1628626654149" duration="8765000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
 </project>

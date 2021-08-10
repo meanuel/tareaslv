@@ -76,26 +76,22 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Obtener el objeto User como json
-     */
-    public function user(Request $request)
-    {
-        return response()->json($request->user());
-    }
-
     public function loginAuna(Request $request)
     {
         $user = User::where('codigo', $request->Codigo)->first();
 
         if ($user->Password == sha1($request->Password)){
+            $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
                 'message' => 'bienvenido',
-                'api_token' => $user->api_token
+                'acces_token' => $token,
+                'res' => true
             ], 200);
         }
         return response()->json([
-            'message' => 'Unauthorized'
+            'message' => 'Usuario y/o contraseña es invalido.',
+            'res' => false
         ], 401);
     }
+
 }
