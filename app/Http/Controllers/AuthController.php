@@ -36,32 +36,24 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
+        $user = User::where('codigo', $request->Codigo)->first();
 
-        $credentials = request(['email', 'password']);
-
-        if (!Auth::attempt($credentials))
+        if ($user->Password == sha1($request->Password)){
+            $user->tokens()->delete();
+            $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
-
-        $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
-
-        $token = $tokenResult->token;
-        if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
-        $token->save();
-
+                'user' => [
+                    'codigo' => $user->Codigo,
+                    'descripcion' => $user->Descripcion
+                ],
+                'acces_token' => $token,
+                'res' => true
+            ], 200);
+        }
         return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
-        ]);
+            'message' => 'Usuario y/o contraseña es invalido.',
+            'res' => false
+        ], 401);
     }
 
     /**
@@ -80,10 +72,14 @@ class AuthController extends Controller
     {
         $user = User::where('codigo', $request->Codigo)->first();
 
-        if ($user->Password == sha1($request->Password)){
+        if ($user->Password == $request->Password){
+            $user->tokens()->delete();
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
-                'message' => 'bienvenido',
+                'user' => [
+                    'codigo' => $user->Codigo,
+                    'descripcion' => $user->Descripcion
+                ],
                 'acces_token' => $token,
                 'res' => true
             ], 200);
