@@ -44,6 +44,6 @@ Route::get('/multi-company/{detemp}/{detapl}', function ($detemp,$detapl) {
 // --------------------- Controllers will go here -----------------------------
 
 // Route::get('/company/{detemp}/{detapl}', [MultiCompanyController::class, 'index']);
-Route::post('/some', [MultiCompanyController::class, 'index']);
+Route::post('/example-multi-company', [MultiCompanyController::class, 'index']);
 
 
