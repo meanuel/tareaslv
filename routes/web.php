@@ -17,12 +17,3 @@ Route::get('/', function () {
     return view('welcome');
 })->name('main');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index']);
-Route::post('/tasks', [App\Http\Controllers\TaskController::class, 'store'])->name('tasks.store');
-Route::get('/tasks/edit/{id}', [App\Http\Controllers\TaskController::class, 'editView'])->name('tasks.edit_view');
-Route::post('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'edit'])->name('tasks.edit');
-Route::delete('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('tasks.destroy');

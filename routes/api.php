@@ -10,13 +10,7 @@ use GuzzleHttp\Client;
 //Rutas de Auth
 // require __DIR__ . '/Auth/AuthRoutes.php';
 
-//Rutas de tareas
-require __DIR__ . '/Task/TaskRoutes.php';
-
-//Rutas de Formularios
-require __DIR__ . '/Formulario/FormularioRoutes.php';
-
-//Ruta de Auth AUNA
+//Routes Auth AUNA
 require __DIR__ . '/authAuna/authAunaRoutes.php';
 
 
