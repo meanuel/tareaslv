@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\_000039;
 use App\Http\Controllers\MultiCompanyController;
+use App\Http\Controllers\Root\Procesos\MaestrosMatrix\MatrixMasterController;
 use GuzzleHttp\Client;
 
 
@@ -40,4 +41,17 @@ Route::get('/multi-company/{detemp}/{detapl}', function ($detemp,$detapl) {
 // Route::get('/company/{detemp}/{detapl}', [MultiCompanyController::class, 'index']);
 Route::post('/example-multi-company', [MultiCompanyController::class, 'index']);
 
+
+Route::middleware('auth:sanctum')->group(function () {
+// ------------------------Matrix Master -------------------------------------
+
+    Route::prefix('root')->group(function () {
+        Route::prefix('/procesos')->group(function () {
+            Route::prefix('/maestros-matrix')->group(function () {
+                Route::get('/permisos', [MatrixMasterController::class, 'permissions']);
+            });
+        });
+    });
+    
+});
 

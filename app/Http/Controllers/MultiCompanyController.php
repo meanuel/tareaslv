@@ -12,7 +12,7 @@ class MultiCompanyController extends Controller
     public function index(Request $request)
     {
         // dd(company($request));
-        $company = DB::connection('mysql')->table(company($request).'_000039')->get();
+        $company = DB::connection('mysql')->table(company($request).'_000150')->get();
         return $company;
     }
 }
