@@ -31,6 +31,24 @@ class MatrixMasterController extends Controller
 
     }
 
+    public function dynamicTables($table_name) {
+        $data = DB::connection('mysql')->table($table_name)->get();
+        if($data) {
+            return response()->json([
+                'success'   =>  true,
+                'message'   =>  'Successful request.',
+                'data'      =>  $data,
+            ], 200);
+        } 
+        else {
+            return response()->json([
+                'success'   =>  false,
+                'message'   =>  'The user is not logged in.',
+                'data'      =>  $data,
+            ], 401);
+        }
+    }
+
     public function table1()
     {
         $company = DB::connection('mysql')->table('root_000030')->get();

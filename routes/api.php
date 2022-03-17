@@ -49,6 +49,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('/procesos')->group(function () {
             Route::prefix('/maestros-matrix')->group(function () {
                 Route::get('/permisos', [MatrixMasterController::class, 'permissions']);
+                Route::get('/editar-datos-matrix/{table_name}', [MatrixMasterController::class, 'permissions']);
             });
         });
     });
