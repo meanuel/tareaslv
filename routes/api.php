@@ -49,7 +49,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::prefix('/procesos')->group(function () {
             Route::prefix('/maestros-matrix')->group(function () {
                 Route::get('/permisos', [MatrixMasterController::class, 'permissions']);
-                Route::get('/editar-datos-matrix/{table_name}', [MatrixMasterController::class, 'permissions']);
+                Route::get('/nombres-columnas-crear/{table_name}', [MatrixMasterController::class, 'columnNamesCreate']);
+                Route::get('/nombres-columnas-actualizar/{table_name}', [MatrixMasterController::class, 'columnNamesUpdate']);
+                
+
+                Route::prefix('editar-datos-matrix')->group(function () {
+                    Route::get('/{table_name}', [MatrixMasterController::class, 'dynamicReadValidation']);
+                    Route::post('/registrar/{table_name}', [MatrixMasterController::class, 'dynamicCreateValidation']);
+                    Route::put('/actualizar/{table_name}/{id}', [MatrixMasterController::class, 'dynamicUpdateValidation']);
+                    Route::delete('/eliminar/{table_name}/{id}', [MatrixMasterController::class, 'dinamicDeleteValidation']);
+                });
             });
         });
     });
