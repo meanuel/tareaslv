@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f599555b-950a-4501-b46c-90e2371352b8" name="Default Changelist" comment="" />
+    <list default="true" id="f599555b-950a-4501-b46c-90e2371352b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Root/Procesos/MaestrosMatrix/MatrixMasterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Root/Procesos/MaestrosMatrix/MatrixMasterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,6 +220,7 @@
       <workItem from="1630701997089" duration="613000" />
       <workItem from="1632519059983" duration="176000" />
       <workItem from="1645644416680" duration="1821000" />
+      <workItem from="1649344175098" duration="15179000" />
     </task>
     <servers />
   </component>

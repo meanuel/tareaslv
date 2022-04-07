@@ -21,7 +21,7 @@ class MatrixMasterController extends Controller
                 'message'   =>  'Successful request.',
                 'data'      =>  $data,
             ], 200);
-        } 
+        }
         else {
             return response()->json([
                 'success'   =>  false,
@@ -32,7 +32,7 @@ class MatrixMasterController extends Controller
 
     }
 
-    public function columnNamesCreate($table_name) 
+    public function columnNamesCreate($table_name)
     {
         $validations = DB::connection('mysql')
         ->table('root_000105')
@@ -46,18 +46,18 @@ class MatrixMasterController extends Controller
             $numbers_columns = DB::select(
                 (new \Illuminate\Database\Schema\Grammars\MySqlGrammar)->compileColumnListing()
                     .' order by ordinal_position', ['matrix',$table_name]);
-            
+
                 foreach($numbers_columns as $item) {
-                    if($item->column_name != 'Medico' & 
-                            $item->column_name != 'Fecha_data' & 
-                            $item->column_name != 'Hora_data' & 
-                            $item->column_name != 'Seguridad' & 
+                    if($item->column_name != 'Medico' &
+                            $item->column_name != 'Fecha_data' &
+                            $item->column_name != 'Hora_data' &
+                            $item->column_name != 'Seguridad' &
                             $item->column_name != 'id'
                             ) {
                             array_push($columns_create, $item->column_name);
                         }
                 }
-            
+
                 $data = $columns_create;
                 if($data) {
                     return response()->json([
@@ -65,7 +65,7 @@ class MatrixMasterController extends Controller
                         'message'   =>  'Successful request.',
                         'data'      =>  $data,
                     ], 200);
-                } 
+                }
             }
             else {
                 return response()->json([
@@ -75,7 +75,7 @@ class MatrixMasterController extends Controller
                 ], 401);
             }
     }
-    public function columnNamesUpdate($table_name) 
+    public function columnNamesUpdate($table_name)
     {
         $columns_update = [];
 
@@ -94,10 +94,10 @@ class MatrixMasterController extends Controller
                 $column_validation = 'SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME = "'.$column.'" and TABLE_NAME = "'.$table_name.'"';
                 $results = DB::select($column_validation);
                 if($results != null){
-                    if($column != 'Medico' & 
-                    $column != 'Fecha_data' & 
-                    $column != 'Hora_data' & 
-                    $column != 'Seguridad' & 
+                    if($column != 'Medico' &
+                    $column != 'Fecha_data' &
+                    $column != 'Hora_data' &
+                    $column != 'Seguridad' &
                     $column != 'id'
                     ) {
                     array_push($validated_columns, $column);
@@ -111,12 +111,12 @@ class MatrixMasterController extends Controller
             $numbers_columns = DB::select(
                 (new \Illuminate\Database\Schema\Grammars\MySqlGrammar)->compileColumnListing()
                     .' order by ordinal_position', ['matrix',$table_name]);
-            
+
                 foreach($numbers_columns as $item) {
-                    if($item->column_name != 'Medico' & 
-                        $item->column_name != 'Fecha_data' & 
-                        $item->column_name != 'Hora_data' & 
-                        $item->column_name != 'Seguridad' & 
+                    if($item->column_name != 'Medico' &
+                        $item->column_name != 'Fecha_data' &
+                        $item->column_name != 'Hora_data' &
+                        $item->column_name != 'Seguridad' &
                         $item->column_name != 'id'
                         ) {
                         array_push($columns_update, $item->column_name);
@@ -131,7 +131,7 @@ class MatrixMasterController extends Controller
                 'message'   =>  'Successful request.',
                 'data'      =>  $data,
             ], 200);
-        } 
+        }
         else {
             return response()->json([
                 'success'   =>  false,
@@ -181,8 +181,8 @@ class MatrixMasterController extends Controller
             return compact('data', 'unvalidated_columns');
         }
 
-        
-    }   
+
+    }
 
     public function dynamicCreateValidation($table_name, Request $request)
     {
@@ -193,29 +193,29 @@ class MatrixMasterController extends Controller
         ->first();
 
         if ($validations->Tabpgr == 'on') {
-            $sql = 'insert into '.$table_name; 
+            $sql = 'insert into '.$table_name;
 
             $numbers_columns = DB::select(
                 (new \Illuminate\Database\Schema\Grammars\MySqlGrammar)->compileColumnListing()
                     .' order by ordinal_position', ['matrix',$table_name]);
-            
+
                 $array_columns = [];
                 foreach($numbers_columns as $item) {
-                    if($item->column_name != 'Medico' & 
-                        $item->column_name != 'Fecha_data' & 
-                        $item->column_name != 'Hora_data' & 
-                        $item->column_name != 'Seguridad' & 
+                    if($item->column_name != 'Medico' &
+                        $item->column_name != 'Fecha_data' &
+                        $item->column_name != 'Hora_data' &
+                        $item->column_name != 'Seguridad' &
                         $item->column_name != 'id'
                         ) {
                         array_push($array_columns, $item->column_name);
                     }
                 }
-            
+
             $columns = ' (Medico, Fecha_data, Hora_data, ';
             $values = 'values (?, ?, ?, ';
 
             if (!empty($array_columns)) {
-            
+
                 foreach ($array_columns as $column){
                     $columns.= $column.', ';
                     $values.= '?, ';
@@ -226,7 +226,7 @@ class MatrixMasterController extends Controller
                 $columns = str_replace(', )', ')', $columns);
                 $values = str_replace(', )', ')', $values);
 
-                $sql.= $columns." ".$values; 
+                $sql.= $columns." ".$values;
 
                 $data = [];
                 array_push($data, 'root');
@@ -236,13 +236,13 @@ class MatrixMasterController extends Controller
                     array_push($data, $datum);
                 }
                 array_push($data, 'C-'.Auth::user()->Codigo);
-                DB::insert($sql, $data);   
-            } 
+                DB::insert($sql, $data);
+            }
         } else {
             $data = 'El usuario no tiene permiso para grabar';
             return $data;
         }
-    }   
+    }
 
     public function dynamicUpdateValidation($table_name, Request $request, $id) {
 
@@ -261,12 +261,12 @@ class MatrixMasterController extends Controller
             $data = implode(',', $data);
 
             $sql.= $data.' where id='.$id;
-            DB::update($sql);  
+            DB::update($sql);
         // } else {
-            
+
         // }
-                   
-         
+
+
     }
 
     public function dinamicDeleteValidation($table_name, $id)
@@ -279,16 +279,57 @@ class MatrixMasterController extends Controller
 
         if ($validations->Tabcam == '*') {
             DB::table($table_name)->where('id', '=', $id)->delete();
+            return response()->json([
+                'message' => 'Se elimino exitosamente',
+                'res' => true
+            ]);
         } else {
-            $data = 'El usurio no tiene permisos para eliminar';
-            return $data;
+            return response()->json([
+                'message' => 'El usurio no tiene permisos para eliminar',
+                'res' => false
+            ]);
         }
-    }  
+    }
 
-    public function table1()
+    public function columnDescription(Request $request)
     {
-        $company = DB::connection('mysql')->table('root_000030')->get();
-        return $company;
+        $table = explode("_",$request->tableName);
+        $name_tabla = $table[0];
+        $consecutive = $table[1];
+
+        $columns = DB::connection('mysql')->table('det_formulario')->select('campo')->where('medico', $name_tabla)->where('codigo', $consecutive)->whereIn('descripcion', $request->columns)->get();
+        $column = [];
+        foreach ($columns as $val) {
+            array_push($column, $val->campo);
+        };
+        if ($column){
+            $company = DB::connection('mysql')->table('root_000030')->select('Dic_Descripcion')->where('Dic_Usuario', $name_tabla)->where('Dic_Formulario', $consecutive)->whereIn('Dic_Campo', $column)->get();
+            if ($company){
+                $descriptions = [];
+                foreach ($company as $val) {
+                    array_push($descriptions, $val->Dic_Descripcion);
+                };
+                return response()->json([
+                    'data' => $descriptions,
+                    'message' => 'Se encontro una descripcion',
+                    'res' => true
+                ]);
+            }
+            else{
+                return response()->json([
+                    'data' => '',
+                    'message' => 'No tiene descripcion',
+                    'res' => false
+                ]);
+            }
+        }else{
+            return response()->json([
+                'data' => '',
+                'message' => 'No tiene descripcion',
+                'res' => false
+            ]);
+        }
+
     }
 
     public function table2()
