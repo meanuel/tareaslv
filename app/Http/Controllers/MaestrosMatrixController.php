@@ -27,7 +27,7 @@ class MaestrosMatrixController extends Controller
         ]);
 
         // permisos
-        $permisos = DB::table('root_000105')->where('Tabusu', Auth::user()->Codigo)->where('Tabtab', $request->tabla)->first(['Tabcvi', 'Tabcam', 'Tabpgr', 'Tabopc']);
+        $permisos = DB::table('root_000105')->where('Tabusu', Auth::user()->Codigo)->where('Tabtab', $request->tabla)->first(['Tabtab','Tabcvi', 'Tabcam', 'Tabpgr', 'Tabopc']);
 
         // detalle
         $tabla_consecutivo = explode('_', $request->tabla);
