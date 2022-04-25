@@ -6,3 +6,7 @@ use \Illuminate\Support\Facades\Auth;
 
 Route::get('/MaestrosMatrix/permisos', 'MaestrosMatrixController@permisos')->middleware('auth:sanctum');
 Route::post('/MaestrosMatrix/datos', 'MaestrosMatrixController@datos')->middleware('auth:sanctum');
+
+Route::post('MaestrosMatrix/selects', 'MaestrosMatrixController@selects')->middleware('auth:sanctum');
+Route::post('MaestrosMatrix/relations', 'MaestrosMatrixController@relaciones')->middleware('auth:sanctum');
+Route::post('MaestrosMatrix/agregar', 'MaestrosMatrixController@agregar')->middleware('auth:sanctum');
