@@ -5,9 +5,106 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\TryCatch;
 
 class MaestrosMatrixController extends Controller
 {
+    public function agregar(Request $request)
+    {
+        $request->validate([
+            "data" => "required",
+            "permisos" => "required"
+        ]);
+
+        if ($request->permisos["Tabpgr"] == 'on') {
+
+                $data = $request->data;
+                $data["Fecha_data"] = date('Y-m-d');
+                $data["Hora_data"] = date('H:i:s');
+                $data["Medico"] = explode('_', $request->permisos["Tabtab"])[0];
+                $data["Seguridad"] = 'C-' . Auth::user()->Codigo;
+            try {
+                $inserccion = DB::connection('mysql')
+                    ->table($request->permisos["Tabtab"])->insert($data);
+                return response()->json([
+                    'data' => $inserccion,
+                    'message' => 'Guardado Correctamente',
+                    'res' => 'true'
+                ]);
+            }catch (Exception $e){
+                return response()->json([
+                    'data' => false,
+                    'message' => 'Error no se pudo guardar el dato',
+                    'res' => 'false'
+                ]);
+            }
+        } else {
+            return response()->json([
+                'data' => false,
+                'message' => 'No tiene permiso',
+                'res' => 'false'
+            ]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+
+        $request->validate([
+            "data" => "required",
+            "permisos" => "required",
+            "row" => "required"
+        ]);
+
+        try {
+            $actualizacion = DB::connection('mysql')
+                ->table($request->permisos["Tabtab"])->where("id", $request->row)->update($request->data);
+            return response()->json([
+                'data' => $actualizacion,
+                'message' => 'Guardado Correctamente',
+                'res' => 'true'
+            ]);
+        }catch (Exception $e){
+            return response()->json([
+                'data' => false,
+                'message' => 'Error no se pudo guardar el dato',
+                'res' => 'false'
+            ]);
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        $request->validate([
+            "permisos" => "required",
+            "row" => "required"
+        ]);
+
+        if ($request->permisos["Tabcam"] == '*') {
+            try {
+                $delete = DB::connection('mysql')
+                    ->table($request->permisos["Tabtab"])->where("id", $request->row)->delete();
+                return response()->json([
+                    'data' => $delete,
+                    'message' => 'Eliminado correctamente',
+                    'res' => 'true'
+                ]);
+            }catch (Exception $e){
+                return response()->json([
+                    'data' => false,
+                    'message' => 'Error no se pudo guardar el dato',
+                    'res' => 'false'
+                ]);
+            }
+        } else {
+            return response()->json([
+                'data' => false,
+                'message' => 'No tiene permiso',
+                'res' => 'false'
+            ]);
+        }
+    }
+
     public function permisos()
     {
 
@@ -154,9 +251,5 @@ class MaestrosMatrixController extends Controller
             'message' => 'Se encontro unos opciones',
             'res' => true
         ]);
-    }
-
-    public function agregar(Request $request){
-        return $request;
     }
 }

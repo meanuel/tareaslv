@@ -10,3 +10,5 @@ Route::post('/MaestrosMatrix/datos', 'MaestrosMatrixController@datos')->middlewa
 Route::post('MaestrosMatrix/selects', 'MaestrosMatrixController@selects')->middleware('auth:sanctum');
 Route::post('MaestrosMatrix/relations', 'MaestrosMatrixController@relaciones')->middleware('auth:sanctum');
 Route::post('MaestrosMatrix/agregar', 'MaestrosMatrixController@agregar')->middleware('auth:sanctum');
+Route::post('MaestrosMatrix/actualizar', 'MaestrosMatrixController@update')->middleware('auth:sanctum');
+Route::post('MaestrosMatrix/eliminar', 'MaestrosMatrixController@delete')->middleware('auth:sanctum');
