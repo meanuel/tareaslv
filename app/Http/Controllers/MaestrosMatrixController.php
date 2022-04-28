@@ -172,11 +172,6 @@ class MaestrosMatrixController extends Controller
 
             $consult = DB::connection('mysql')->table($request->medico . '_' . $destructur[1])->groupBy($keys[0])->get($keys);
             $key2 = [];
-            $key2[] = [
-                'key' => '*',
-                'text' => '*-todos',
-                'value' => '*'
-            ];
             foreach ($consult as $select) {
                 $key2[] = [
                     'key' => current($select),
@@ -200,11 +195,6 @@ class MaestrosMatrixController extends Controller
             $consult = DB::connection('mysql')->table($destructur[1] . '_' . $destructur[2])->groupBy($keys[0])->get($keys);
 
             $key2 = [];
-            $key2[] = [
-                'key' => '*',
-                'text' => '*-todos',
-                'value' => '*'
-            ];
             foreach ($consult as $select) {
                 $key2[] = [
                     'key' => current($select),

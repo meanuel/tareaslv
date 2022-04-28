@@ -1,5 +1,6 @@
 /node_modules
 /public/hot
+.idea/workspace.xml
 /public/storage
 /storage/*.key
 /vendor
